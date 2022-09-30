@@ -1,0 +1,20 @@
+.aside {
+  display: flex;
+  flex-direction: row;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    min-width: 5%;
+    min-height: 100vh;
+    background-color: #161b21;
+  }
+
+  &__division {
+    background-color: #2e373f;
+    min-height: 100vh;
+    width: 4px;
+  }
+}

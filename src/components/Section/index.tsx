@@ -18,8 +18,8 @@ const Section: React.FunctionComponent<ISection> = ({
 }): React.ReactElement => (
   <>
     <Metatag title={title} description={description} />
-    <section className={classnames('section mt-4 pt-3 pb-3', className)}>
-      <Container>{children}</Container>
+    <section className={classnames('section', className)}>
+      <Container className={classnames('m-0 p-0 mw-100', className)}>{children}</Container>
     </section>
   </>
 );
