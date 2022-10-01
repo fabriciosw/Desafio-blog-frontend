@@ -1,36 +1,32 @@
-import jwt_decode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
+import getTokenStorage from '../utils/getTokenStorage';
 import HttpClient from './httpClient';
 
+interface JWTPayload {
+  auth: 'none' | 'admin';
+  exp: EpochTimeStamp;
+  iat: EpochTimeStamp;
+  sub: string;
+}
 export default class SessionsService {
-  static async loginUser(
-    email: string,
-    password: string
-    // setAuthentication: (x: boolean) => void
-  ): Promise<void> {
-    await HttpClient.api
-      .post('/session', {
-        email,
-        password,
-      })
-      .then((response) => {
-        const { token } = response.data;
+  static async loginUser(email: string, password: string): Promise<JWTPayload> {
+    const response = await HttpClient.api.post('/session', {
+      email,
+      password,
+    });
 
-        const decoded = jwt_decode(token);
+    const { token } = response.data;
 
-        return decoded;
+    const decoded: JWTPayload = jwtDecode(token);
 
-        // const authorization = decoded.auth;
+    localStorage.setItem('TOKEN_KEY', token);
+    HttpClient.api.defaults.headers.common.Authorization = getTokenStorage();
 
-        // if (authorization === 'true') setIsAdmin(true);
-
-        // localStorage.setItem('TOKEN_KEY', token);
-        // setAuthentication(true);
-        // HttpClient.api.defaults.headers.common.Authorization = getTokenStorage();
-      });
+    return decoded;
   }
 
   static logoutUser(): void {
     localStorage.removeItem('TOKEN_KEY');
-    document.location.reload();
+    HttpClient.api.defaults.headers.common.Authorization = '';
   }
 }

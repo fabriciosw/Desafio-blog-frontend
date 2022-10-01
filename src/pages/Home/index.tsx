@@ -6,7 +6,7 @@ import Section from '../../components/Section';
 import './styles.scss';
 
 const Home: React.FunctionComponent = () => (
-  <Section className="p-0 d-flex " title="Página inicial" description="Página inicial">
+  <Section className="p-0 d-flex" title="Página inicial" description="Página inicial">
     <Col md={12} className="home">
       <Aside />
       <div className="home__body">

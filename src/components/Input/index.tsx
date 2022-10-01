@@ -1,39 +1,40 @@
 import React from 'react';
-import classNames from 'classnames';
-import { FastField } from 'formik';
-import Text from '../Text';
+import { alpha, styled } from '@mui/material/styles';
+import { TextField, TextFieldProps } from '@mui/material';
 
-interface IInput {
-  cy: string;
-  isInvalid?: boolean;
-  msg?: string;
-  className?: string;
-  label?: string;
-  id: string;
-  name: string;
-  as: string;
-  placeholder?: string;
-}
+const inputColor = '#17171A';
+const textsColor = '#EAEAEA';
+const focusColor = '#4b5efb';
 
-const Input = ({ cy, isInvalid, msg, className, label, id, name, as, placeholder }: IInput): React.ReactElement => (
-  <label htmlFor={id} className="w-100">
-    {label}
-    <FastField
-      cy={cy}
-      id={id}
-      as={as}
-      name={name}
-      placeholder={placeholder}
-      className={classNames(`form-control ${isInvalid ? 'is-invalid' : ''} ${className}`)}
-    />
-    {isInvalid ? (
-      <Text as="span" color="var(--red-500)" weight={500}>
-        {msg}
-      </Text>
-    ) : null}
-  </label>
+const StyledTextField = styled(TextField)(() => ({
+  '& label.Mui-focused': {
+    color: textsColor,
+    fontSize: 18,
+  },
+  '& label': {
+    color: textsColor,
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderRadius: 8,
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: focusColor,
+    },
+  },
+  '& .MuiInputBase-input': {
+    backgroundColor: inputColor,
+    borderRadius: 8,
+    color: textsColor,
+    '&:focus': {
+      boxShadow: `${alpha(focusColor, 0.25)} 0 0 0 0.2rem`,
+      borderColor: focusColor,
+    },
+  },
+}));
+
+const Input: React.FunctionComponent<TextFieldProps> = (textFieldProps: TextFieldProps): React.ReactElement => (
+  <StyledTextField {...textFieldProps} />
 );
-
-Input.defaultProps = { isInvalid: false, msg: '', className: '', label: '', placeholder: '' };
 
 export default Input;

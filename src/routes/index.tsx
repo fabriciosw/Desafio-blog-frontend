@@ -10,7 +10,7 @@ const AppRoutes: React.FunctionComponent = () => {
   const { authentication } = AuthenticationContext();
 
   const PrivateRoute = (children: React.ReactElement): React.ReactElement => {
-    if (authentication.isAuthenticated) return <Redirect to="/login" />;
+    if (!authentication.isAuthenticated) return <Redirect to="/login" />;
 
     return children;
   };
@@ -21,11 +21,7 @@ const AppRoutes: React.FunctionComponent = () => {
         <main>
           <React.Suspense fallback={<Loader />}>
             <Switch>
-              {/* <Route path="/login" element={isAuthenticated ? <Navigate to="/home" replace /> : <Login />} /> */}
-
-              <Route path="/login">
-                <Login />
-              </Route>
+              <Route path="/login">{authentication.isAuthenticated ? <Redirect exact to="/" /> : <Login />}</Route>
 
               <Route exact path="/">
                 {PrivateRoute(<Home />)}

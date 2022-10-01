@@ -1,14 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { ToastContainer } from 'react-toastify';
 import App from './App';
 import ToastContainerProps from './utils/toastContainerProps';
 import './theme/main.scss';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
   <>
-    <ToastContainer {...ToastContainerProps} />
+    <ToastContainer {...ToastContainerProps} theme="dark" />
     <App />
-  </>,
-  document.getElementById('root')
+  </>
 );
