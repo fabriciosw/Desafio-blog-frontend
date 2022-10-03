@@ -15,6 +15,11 @@ const StyledTextField = styled(TextField)(() => ({
     color: textsColor,
   },
   '& .MuiOutlinedInput-root': {
+    padding: 0,
+    '& textarea': {
+      padding: 14,
+      minHeight: 250,
+    },
     '& fieldset': {
       borderRadius: 8,
     },
@@ -26,9 +31,9 @@ const StyledTextField = styled(TextField)(() => ({
     backgroundColor: inputColor,
     borderRadius: 8,
     color: textsColor,
+    border: '#2e373f 2px solid',
     '&:focus': {
       boxShadow: `${alpha(focusColor, 0.25)} 0 0 0 0.2rem`,
-      borderColor: focusColor,
     },
   },
 }));

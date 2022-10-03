@@ -1,15 +1,15 @@
-import { createContext, useContext } from 'react';
+import { createContext, Dispatch, SetStateAction, useContext } from 'react';
 
-export interface Auth {
+export interface IAuth {
   isAuthenticated: boolean;
   permission?: 'none' | 'admin';
 }
 
-type Props = {
-  authentication: Auth;
-  setAuthentication: (x: Auth) => void;
+type authenticationProps = {
+  authentication: IAuth;
+  setAuthentication: Dispatch<SetStateAction<IAuth>>;
 };
 
-export const Authentication = createContext<Props>({} as Props);
+export const Authentication = createContext<authenticationProps>({} as authenticationProps);
 
-export const AuthenticationContext = (): Props => useContext(Authentication);
+export const AuthenticationContext = (): authenticationProps => useContext(Authentication);

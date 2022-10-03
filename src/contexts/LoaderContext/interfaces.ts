@@ -3,7 +3,7 @@ import React from 'react';
 export interface ILoaderContext {
   showLoader: boolean;
   setShowLoader: (showLoader: boolean) => void;
-  renderLoader: (action: string) => void;
+  renderLoader: (action: 'show' | 'hide') => void;
 }
 
 export interface ILoaderProvider {

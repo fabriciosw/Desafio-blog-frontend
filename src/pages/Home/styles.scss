@@ -5,7 +5,20 @@
   padding: 0;
 
   &__body {
+    padding: 3.5rem 10rem 3.5rem (calc(10rem + 4.5%));
     background-color: #0e1118;
     width: -webkit-fill-available;
+    min-height: 100vh;
   }
+}
+
+.myGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.underline {
+  padding-bottom: 8px;
+  display: inline-block;
+  border-bottom: 3px solid #4717f6;
 }

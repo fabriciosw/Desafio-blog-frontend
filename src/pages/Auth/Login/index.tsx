@@ -3,14 +3,13 @@ import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { FaBlog } from 'react-icons/fa';
-import Text from '../../components/Text';
-
-import Section from '../../components/Section';
-import SessionsService from '../../services/sessions.service';
-import toastMsg, { ToastType } from '../../utils/toastMsg';
-import { AuthenticationContext } from '../../contexts/AuthenticationContext';
-import Input from '../../components/Input';
-
+import Text from '../../../components/Text';
+import Section from '../../../components/Section';
+import SessionsService from '../../../services/sessions.service';
+import toastMsg, { ToastType } from '../../../utils/toastMsg';
+import { AuthenticationContext } from '../../../contexts/AuthenticationContext';
+import Input from '../../../components/Input';
+import { useLoader } from '../../../contexts/LoaderContext';
 import './styles.scss';
 
 interface ILogin {
@@ -22,8 +21,11 @@ const Login: React.FunctionComponent = (): React.ReactElement => {
   const [loginForm, setLoginForm] = useState<ILogin>({ email: '', password: '' });
   const { setAuthentication } = AuthenticationContext();
 
+  const { renderLoader } = useLoader();
+
   const handleSubmit = async (event: React.FormEvent, values: ILogin): Promise<void> => {
     event.preventDefault();
+    renderLoader('show');
     const { email, password } = values;
 
     await SessionsService.loginUser(email, password)
@@ -33,7 +35,14 @@ const Login: React.FunctionComponent = (): React.ReactElement => {
         setAuthentication({ isAuthenticated: true, permission: authorization });
         toastMsg(ToastType.Success, 'Logado com sucesso!');
       })
-      .catch((error) => toastMsg(ToastType.Error, (error as Error).message));
+      .catch((error) => {
+        if (error?.response?.data?.message === 'INVALID_CREDENTIALS')
+          toastMsg(ToastType.Error, 'Email ou senha inválidos');
+        else toastMsg(ToastType.Error, 'Ocorreu algum problema, tente novamente mais tarde');
+      })
+      .finally(() => {
+        renderLoader('hide');
+      });
   };
 
   return (
@@ -54,14 +63,14 @@ const Login: React.FunctionComponent = (): React.ReactElement => {
             </Text>
             <Text as="small" size="1.125rem" weight={300} color="#E0E5E9">
               Não tem uma conta?{' '}
-              <Link to="/" className="login__signup">
+              <Link to="/cadastro" className="login__signup">
                 Cadastre-se
               </Link>
             </Text>
           </Col>
         </Row>
         <Row>
-          <Col md={12} className="mb-3">
+          <Col md={12}>
             <form onSubmit={(e) => handleSubmit(e, loginForm)} autoComplete="off">
               <Input
                 value={loginForm.email}

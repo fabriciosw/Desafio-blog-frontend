@@ -1,10 +1,13 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { AuthenticationContext } from '../contexts/AuthenticationContext';
 import Loader from '../components/Loader';
 import Home from '../pages/Home';
 import Error from '../pages/Error';
-import Login from '../pages/Login';
-import { AuthenticationContext } from '../contexts/AuthenticationContext';
+import Login from '../pages/Auth/Login';
+import Signup from '../pages/Auth/Signup';
+import SeeOnePost from '../pages/Posts/SeeOne';
+import CreatePost from '../pages/Posts/Create';
 
 const AppRoutes: React.FunctionComponent = () => {
   const { authentication } = AuthenticationContext();
@@ -22,9 +25,16 @@ const AppRoutes: React.FunctionComponent = () => {
           <React.Suspense fallback={<Loader />}>
             <Switch>
               <Route path="/login">{authentication.isAuthenticated ? <Redirect exact to="/" /> : <Login />}</Route>
+              <Route path="/cadastro">{authentication.isAuthenticated ? <Redirect exact to="/" /> : <Signup />}</Route>
+
+              <Route path="/post/criar">{PrivateRoute(<CreatePost />)}</Route>
 
               <Route exact path="/">
-                {PrivateRoute(<Home />)}
+                <Home />
+              </Route>
+
+              <Route path="/post/:postId">
+                <SeeOnePost />
               </Route>
 
               <Route path="*">

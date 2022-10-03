@@ -11,7 +11,7 @@ export function useLoader(): ILoaderContext {
 export function LoaderProvider({ children }: ILoaderProvider): React.ReactElement {
   const [showLoader, setShowLoader] = useState(false);
 
-  function renderLoader(action: string): void {
+  function renderLoader(action: 'show' | 'hide'): void {
     switch (action) {
       case 'show':
         setShowLoader(true);
