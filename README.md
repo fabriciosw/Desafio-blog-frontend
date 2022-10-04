@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://softdesign.com.br/wp-content/themes/bones/library/images/logotipo.svg" alt="Softdesign logo" />
-</p>
-
 # :rocket: React quickstart
 
 Esse projeto foi criado com base no [Create React App](https://github.com/facebook/create-react-app) utilizando o template de **typescript**.
@@ -38,7 +34,7 @@ Após o processo ser concluído no próprio terminal aberto localize a pasta que
 
 Quando concluir a instalação das dependências, abra o projeto no seu editor, crie um arquivo `.env` com as mesmas informações do `.env.example` e peça as infomações com alguém da sua equipe para popular as variáveis.
 
-Após realizar essas alterações, digite no seu terminal `$ yarn start` e aguarde o seu projeto iniciar. :smile:
+Após realizar essas alterações, digite no seu terminal `$ yarn dev` e aguarde o seu projeto iniciar. :smile:
 
 ### :star: Configurações principais
 

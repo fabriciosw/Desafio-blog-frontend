@@ -40,8 +40,12 @@ const Post: React.FunctionComponent = () => {
 
   const handleSubmit = async (event: React.FormEvent, values: ICreatePost): Promise<void> => {
     event.preventDefault();
-    renderLoader('show');
     const { category, title, content } = values;
+    if (!category) {
+      toastMsg(ToastType.Warning, 'Selecione uma categoria');
+      return;
+    }
+    renderLoader('show');
 
     await PostsService.create(category, title, content)
       .then(() => {
@@ -73,7 +77,6 @@ const Post: React.FunctionComponent = () => {
                 value={post.title}
                 onChange={(e) => setPost({ ...post, title: e.target.value })}
                 fullWidth
-                placeholder="Título"
                 required
                 sx={{ marginBottom: 3 }}
               />
@@ -93,7 +96,6 @@ const Post: React.FunctionComponent = () => {
               <Input
                 value={post.content}
                 onChange={(e) => setPost({ ...post, content: e.target.value })}
-                placeholder="Conteúdo"
                 fullWidth
                 required
                 multiline

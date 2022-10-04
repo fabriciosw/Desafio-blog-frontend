@@ -154,9 +154,7 @@ const Select: React.FunctionComponent<Props> = ({
   value,
 }: Props): React.ReactElement => (
   <div style={{ position: 'relative' }}>
-    <CustomSelect defaultValue={defaultValue || ''} value={value} onChange={onChange}>
-      <StyledOption value="">Selecione uma opção</StyledOption>
-
+    <CustomSelect defaultValue={defaultValue} value={value} onChange={onChange}>
       {React.Children.toArray(
         [...selectOptions].map(({ name: optName, value: optValue }) => (
           <StyledOption value={optValue}>{optName}</StyledOption>

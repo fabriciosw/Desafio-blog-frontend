@@ -10,7 +10,7 @@ interface JWTPayload {
 }
 export default class SessionsService {
   static async loginUser(email: string, password: string): Promise<JWTPayload> {
-    const response = await HttpClient.api.post('/session', {
+    const response = await HttpClient.api.post('/sessions', {
       email,
       password,
     });
