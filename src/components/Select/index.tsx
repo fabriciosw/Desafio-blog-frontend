@@ -117,7 +117,7 @@ const StyledOption = styled(OptionUnstyled)(
 );
 
 const StyledPopper = styled(PopperUnstyled)`
-  min-width: 55%;
+  width: 100%;
   z-index: 1;
 `;
 
@@ -144,10 +144,8 @@ interface Props {
   selectOptions: IOption[];
   defaultValue?: string;
   value: string | number;
-  onChange: (e: React.ChangeEvent<EventTarget>, newValue: string | number) => void;
+  onChange: (e: React.ChangeEvent<EventTarget> | null, newValue: string | number | null) => void;
 }
-
-type onChangeFk = (e: React.ChangeEvent<EventTarget> | null) => void;
 
 const Select: React.FunctionComponent<Props> = ({
   selectOptions,
@@ -155,15 +153,17 @@ const Select: React.FunctionComponent<Props> = ({
   onChange,
   value,
 }: Props): React.ReactElement => (
-  <CustomSelect defaultValue={defaultValue || ''} value={value} onChange={onChange as onChangeFk}>
-    <StyledOption value="">Selecione uma opção</StyledOption>
+  <div style={{ position: 'relative' }}>
+    <CustomSelect defaultValue={defaultValue || ''} value={value} onChange={onChange}>
+      <StyledOption value="">Selecione uma opção</StyledOption>
 
-    {React.Children.toArray(
-      [...selectOptions].map(({ name: optName, value: optValue }) => (
-        <StyledOption value={optValue}>{optName}</StyledOption>
-      ))
-    )}
-  </CustomSelect>
+      {React.Children.toArray(
+        [...selectOptions].map(({ name: optName, value: optValue }) => (
+          <StyledOption value={optValue}>{optName}</StyledOption>
+        ))
+      )}
+    </CustomSelect>
+  </div>
 );
 
 export default Select;

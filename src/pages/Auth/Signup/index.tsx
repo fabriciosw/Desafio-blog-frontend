@@ -24,7 +24,7 @@ const Signup: React.FunctionComponent = (): React.ReactElement => {
 
   const { renderLoader } = useLoader();
 
-  const handleSubmit = async (event: React.FormEvent, values: ISignup): Promise<void> => {
+  const handleSubmit = (event: React.FormEvent, values: ISignup): void => {
     event.preventDefault();
     renderLoader('show');
     const { name, email, password } = values;
@@ -58,7 +58,7 @@ const Signup: React.FunctionComponent = (): React.ReactElement => {
               Criar conta
             </Text>
             <Text as="small" size="1.125rem" weight={300} color="#E0E5E9">
-              Crie sua conta e tenha acesso ao melhor blog da Brasilândia do Norte!
+              Crie sua conta e tenha acesso ao Blob Blog!
             </Text>
             <Text as="small" size="1.125rem" weight={300} color="#E0E5E9" className="mt-2">
               Já tem uma conta?{' '}

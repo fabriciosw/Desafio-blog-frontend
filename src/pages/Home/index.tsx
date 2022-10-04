@@ -21,7 +21,7 @@ const Home: React.FunctionComponent = () => {
         setPosts(foundPosts);
       })
       .catch(() => {
-        toastMsg(ToastType.Error, 'Ocorreu algum problema ao pegar os posts');
+        toastMsg(ToastType.Error, 'Ocorreu algum problema ao carregar os posts');
       })
       .finally(() => {
         renderLoader('hide');
@@ -34,9 +34,9 @@ const Home: React.FunctionComponent = () => {
         <Aside />
         <div className="home__body">
           <Text as="h1" size="2.5rem" weight={700} color="#E0E5E9" className="mb-5 underline">
-            Anonymous Blog | Posts
+            Blob Blog | Posts
           </Text>
-          <div className="myGrid">
+          <div className="postsGrid">
             {posts.map((post) => (
               <PostCard post={post} key={post.id} />
             ))}

@@ -12,7 +12,7 @@ import { useLoader } from '../../../contexts/LoaderContext';
 import { ICreatePost } from '../../../interfaces/IPost';
 import PostsService from '../../../services/posts.service';
 import IPostCategory from '../../../interfaces/IPostCategory';
-import PostCategoriesService from '../../../services/postCategories';
+import PostCategoriesService from '../../../services/postCategories.service';
 import './styles.scss';
 
 const Post: React.FunctionComponent = () => {

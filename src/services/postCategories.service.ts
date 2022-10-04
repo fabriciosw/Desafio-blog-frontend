@@ -7,6 +7,14 @@ class PostCategoriesService {
 
     return data;
   }
+
+  static async create(
+    name: string
+  ): Promise<{ message: string; user: Pick<IPostCategory, 'id' | 'name' | 'createdAt'> }> {
+    const { data } = await HttpClient.api.post('/postCategories', { name });
+
+    return data;
+  }
 }
 
 export default PostCategoriesService;

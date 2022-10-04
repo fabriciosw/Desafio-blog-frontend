@@ -8,12 +8,19 @@ import Login from '../pages/Auth/Login';
 import Signup from '../pages/Auth/Signup';
 import SeeOnePost from '../pages/Posts/SeeOne';
 import CreatePost from '../pages/Posts/Create';
+import ManageCategories from '../pages/Categories/Manage';
 
 const AppRoutes: React.FunctionComponent = () => {
   const { authentication } = AuthenticationContext();
 
-  const PrivateRoute = (children: React.ReactElement): React.ReactElement => {
+  const UserRoute = (children: React.ReactElement): React.ReactElement => {
     if (!authentication.isAuthenticated) return <Redirect to="/login" />;
+
+    return children;
+  };
+
+  const AdminRoute = (children: React.ReactElement): React.ReactElement => {
+    if (authentication.permission !== 'admin') return <Redirect to="/" />;
 
     return children;
   };
@@ -27,15 +34,17 @@ const AppRoutes: React.FunctionComponent = () => {
               <Route path="/login">{authentication.isAuthenticated ? <Redirect exact to="/" /> : <Login />}</Route>
               <Route path="/cadastro">{authentication.isAuthenticated ? <Redirect exact to="/" /> : <Signup />}</Route>
 
-              <Route path="/post/criar">{PrivateRoute(<CreatePost />)}</Route>
-
               <Route exact path="/">
                 <Home />
               </Route>
 
+              <Route path="/post/criar">{UserRoute(<CreatePost />)}</Route>
+
               <Route path="/post/:postId">
                 <SeeOnePost />
               </Route>
+
+              <Route path="/categorias">{AdminRoute(<ManageCategories />)}</Route>
 
               <Route path="*">
                 <Error />

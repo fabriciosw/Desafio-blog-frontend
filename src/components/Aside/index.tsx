@@ -17,7 +17,7 @@ const AsideTooltip = styled(({ className, ...props }: TooltipProps) => (
     arrow
     placement="right"
     TransitionComponent={Fade}
-    TransitionProps={{ timeout: 500 }}
+    TransitionProps={{ timeout: 300 }}
   />
 ))(() => ({
   [`& .${tooltipClasses.tooltip}`]: {
@@ -58,19 +58,15 @@ const Aside = (): React.ReactElement => {
               <FaHome size={26} color="#4B5EFB" />
             </Button>
           </AsideTooltip>
-
-          {handleOptionsPermission(
-            <AsideTooltip title="Criar Post">
-              <Button onClick={() => history.push('/post/criar')}>
-                <MdOutlinePostAdd size={26} color="#4B5EFB" />
-              </Button>
-            </AsideTooltip>,
-            'none'
-          )}
+          <AsideTooltip title="Criar Post">
+            <Button onClick={() => history.push('/post/criar')}>
+              <MdOutlinePostAdd size={26} color="#4B5EFB" />
+            </Button>
+          </AsideTooltip>
 
           {handleOptionsPermission(
             <AsideTooltip title="Gerenciar Categorias">
-              <Button>
+              <Button onClick={() => history.push('/categorias')}>
                 <BiCategory size={26} color="#4B5EFB" />
               </Button>
             </AsideTooltip>,

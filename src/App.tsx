@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { IAuth, Authentication } from './contexts/AuthenticationContext';
 import { LoaderProvider } from './contexts/LoaderContext';
 import { ToggleMenuProvider } from './contexts/ToggleMenuContext';
 import Routes from './routes';
-import OldSession from './utils/useOldSession';
+import useOldSession from './utils/useOldSession';
 
 const App: React.FunctionComponent = () => {
-  const [authentication, setAuthentication] = useState<IAuth>({} as IAuth);
-
-  useEffect(() => {
-    OldSession(setAuthentication);
-  }, []);
+  const [authentication, setAuthentication] = useState<IAuth>(useOldSession());
 
   return (
     <Router>

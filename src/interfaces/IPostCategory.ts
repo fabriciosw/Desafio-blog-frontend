@@ -1,6 +1,6 @@
 export default interface IPostCategory {
   id: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   name: string;
 }

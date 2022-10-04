@@ -24,7 +24,7 @@ const Post: React.FunctionComponent = () => {
         setPost(foundPost);
       })
       .catch(() => {
-        toastMsg(ToastType.Error, 'Ocorreu algum problema ao pegar o post');
+        toastMsg(ToastType.Error, 'Ocorreu algum problema ao carregar o post');
       })
       .finally(() => {
         renderLoader('hide');
