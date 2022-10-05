@@ -7,6 +7,16 @@
   border: 3px #23282e solid;
   border-radius: 0.5rem;
 
+  &__icon {
+    min-width: 50px;
+
+    @media screen {
+      @media (max-width: 1400px) {
+        min-width: 40px;
+      }
+    }
+  }
+
   &__post {
     &__authorName {
       max-width: 250px;
@@ -50,4 +60,8 @@
 
 .ml-auto {
   margin-left: auto;
+}
+
+.pl-3 {
+  padding-left: 1rem;
 }

@@ -12,11 +12,11 @@
 
     @media screen {
       @media (max-width: 1400px) {
-        padding: 3.5rem 6rem 3.5rem (calc(6rem + 4.5%));
+        padding: 3.5rem 5rem 3.5rem (calc(5rem + 4.5%));
       }
 
       @media (max-width: 900px) {
-        grid-template-columns: repeat(1, 1fr);
+        padding: 3.5rem 2.5rem 3.5rem (calc(2.5rem + 4.5%));
       }
     }
   }
@@ -24,17 +24,7 @@
 
 .postsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  @media screen {
-    @media (max-width: 1400px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 900px) {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
+  grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
 }
 
 .underline {

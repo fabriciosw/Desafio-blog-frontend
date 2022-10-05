@@ -24,13 +24,13 @@ const PostCard = ({ post }: Props): React.ReactElement => {
       tabIndex={0}
     >
       <div className="d-flex flex-row">
-        <HiUserCircle size={50} color="#E0E5E9" />
+        <HiUserCircle size={50} color="#E0E5E9" className="postCard__icon" />
         <div className="d-flex flex-column w-100 mx-3">
           <div className="d-flex flex-row w-100 mt-1">
             <Text as="small" size="1rem" weight={500} color="#888D93" className="mb-0 postCard__post__authorName">
               {author.name}
             </Text>
-            <Text as="small" size="0.875rem" weight={500} color="#888D93" className="ml-auto mb-0">
+            <Text as="small" size="0.875rem" weight={500} color="#888D93" className="ml-auto mb-0 pl-3">
               {formatDate(createdAt)}
             </Text>
           </div>
