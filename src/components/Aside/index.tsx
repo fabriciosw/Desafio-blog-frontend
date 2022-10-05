@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaHome, FaPowerOff } from 'react-icons/fa';
 import { FiLogIn } from 'react-icons/fi';
-import { HiMenu } from 'react-icons/hi';
+import { HiMenu, HiDocumentDuplicate } from 'react-icons/hi';
 import { BiCategory } from 'react-icons/bi';
 import { MdOutlinePostAdd } from 'react-icons/md';
 import { Button, Fade, styled, Tooltip, tooltipClasses, TooltipProps } from '@mui/material';
@@ -58,9 +58,16 @@ const Aside = (): React.ReactElement => {
               <FaHome size={26} color="#4B5EFB" />
             </Button>
           </AsideTooltip>
+
           <AsideTooltip title="Criar Post">
-            <Button onClick={() => history.push('/post/criar')}>
+            <Button onClick={() => history.push('/criar-post')}>
               <MdOutlinePostAdd size={26} color="#4B5EFB" />
+            </Button>
+          </AsideTooltip>
+
+          <AsideTooltip title="Meus Posts">
+            <Button onClick={() => history.push('/meus-posts')}>
+              <HiDocumentDuplicate size={26} color="#4B5EFB" />
             </Button>
           </AsideTooltip>
 

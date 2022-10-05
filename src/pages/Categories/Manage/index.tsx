@@ -59,7 +59,7 @@ const Post: React.FunctionComponent = () => {
 
   return (
     <Section className="p-0 d-flex" title="Categorias">
-      <Col md={12} className={styles.postContainer}>
+      <Col md={12} className={styles.container}>
         <Aside />
 
         <Modal open={showCreateModal}>
@@ -90,7 +90,7 @@ const Post: React.FunctionComponent = () => {
           </Box>
         </Modal>
 
-        <div className={styles.postContainer__body}>
+        <div className={styles.container__body}>
           <div className={styles.categories}>
             <div className="d-flex flex-row justify-content-between">
               <Text as="h1" size="3.5rem" weight={700} color="#E0E5E9" className="mb-2">

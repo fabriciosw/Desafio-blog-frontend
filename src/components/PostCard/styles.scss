@@ -1,11 +1,11 @@
 .postCard {
-  padding: 15px;
+  padding: 1rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
   background-color: #161b21;
   border: 3px #23282e solid;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 
   &__post {
     &__authorName {
@@ -14,17 +14,27 @@
       text-overflow: ellipsis;
       overflow: hidden;
       display: block;
+
+      @media screen {
+        @media (max-width: 1800px) {
+          max-width: 150px;
+        }
+        @media (max-width: 1400px) {
+          max-width: 140px;
+        }
+      }
     }
 
     &__category {
       background-color: #21262c;
       width: fit-content;
       padding: 6px;
-      border-radius: 8px;
+      border-radius: 0.5rem;
       border: solid 2px #292e34;
     }
 
     &__title {
+      width: 100%;
       margin-top: 0.25rem;
       overflow: hidden;
       text-overflow: ellipsis;

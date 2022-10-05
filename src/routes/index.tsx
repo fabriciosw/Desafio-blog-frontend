@@ -9,6 +9,7 @@ import Signup from '../pages/Auth/Signup';
 import SeeOnePost from '../pages/Posts/SeeOne';
 import CreatePost from '../pages/Posts/Create';
 import ManageCategories from '../pages/Categories/Manage';
+import MyPosts from '../pages/Posts/Mine';
 
 const AppRoutes: React.FunctionComponent = () => {
   const { authentication } = AuthenticationContext();
@@ -38,7 +39,8 @@ const AppRoutes: React.FunctionComponent = () => {
                 <Home />
               </Route>
 
-              <Route path="/post/criar">{UserRoute(<CreatePost />)}</Route>
+              <Route path="/criar-post">{UserRoute(<CreatePost />)}</Route>
+              <Route path="/meus-posts">{UserRoute(<MyPosts />)}</Route>
 
               <Route path="/post/:postId">
                 <SeeOnePost />

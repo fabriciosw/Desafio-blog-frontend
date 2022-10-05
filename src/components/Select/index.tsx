@@ -15,10 +15,10 @@ const StyledButton = styled('button')(
   font-family: Nunito, IBM Plex Sans, sans-serif;
   font-size: 1rem;
   box-sizing: border-box;
-  min-height: 58px;
+  min-height: 3.625rem;
   min-width: 100%;
-  padding: 12px;
-  border-radius: 8px;
+  padding: .75rem;
+  border-radius: .5rem;
   border: #2e373f 2px solid;
   text-align: left;
   line-height: 1.5;
@@ -64,11 +64,24 @@ const StyledListbox = styled('ul')(
   font-size: 1rem;
   box-sizing: border-box;
   padding: 6px;
-  margin: 12px 0;
-  min-width: 320px;
-  max-height: 320px;
-  border-radius: 8px;
+  margin: .75rem 0;
+  min-width: 20rem;
+  max-height: 20rem;
+  border-radius: .5rem;
   overflow: auto;
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  /* Espaço de rolagem */
+  &::-webkit-scrollbar-track {
+    border-radius: 0.625rem;
+    background-color: #2e373f;
+  }
+  /* Barra de rolagem */
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.625rem;
+    background: #4b5efb !important;
+  }
   background: ${inputColor};
   color: ${textsColor};
 
@@ -81,10 +94,10 @@ const StyledListbox = styled('ul')(
 const StyledOption = styled(OptionUnstyled)(
   () => `
   list-style: none;
-  padding: 12px 12px;
-  border-radius: 8px;
+  padding: .75rem;
+  border-radius: .5rem;
   cursor: pointer;
-  margin-bottom: 8px;
+  margin-bottom: .5rem;
 
   &:last-of-type {
     border-bottom: none;
@@ -142,7 +155,7 @@ interface IOption {
 
 interface Props {
   selectOptions: IOption[];
-  defaultValue?: string;
+  defaultValue?: string | number;
   value: string | number;
   onChange: (e: React.ChangeEvent<EventTarget> | null, newValue: string | number | null) => void;
 }

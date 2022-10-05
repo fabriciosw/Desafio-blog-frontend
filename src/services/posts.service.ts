@@ -14,6 +14,12 @@ class PostsService {
     return data;
   }
 
+  static async readByUser(): Promise<IPost[]> {
+    const { data } = await HttpClient.api.get(`/posts/me`);
+
+    return data;
+  }
+
   static async create(categoryId: string, title: string, content: string): Promise<{ user: Pick<IPost, 'author'> }> {
     const { data } = await HttpClient.api.post('/posts', { categoryId, title, content });
     return data;
