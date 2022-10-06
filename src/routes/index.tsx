@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { AuthenticationContext } from '../contexts/AuthenticationContext';
+import { useAuthentication } from '../contexts/AuthenticationContext';
 import Loader from '../components/Loader';
 import Home from '../pages/Home';
 import Error from '../pages/Error';
@@ -9,10 +9,10 @@ import Signup from '../pages/Auth/Signup';
 import SeeOnePost from '../pages/Posts/SeeOne';
 import CreatePost from '../pages/Posts/Create';
 import ManageCategories from '../pages/Categories/Manage';
-import MyPosts from '../pages/Posts/Mine';
+import MyPosts from '../pages/Posts/My';
 
 const AppRoutes: React.FunctionComponent = () => {
-  const { authentication } = AuthenticationContext();
+  const { authentication } = useAuthentication();
 
   const UserRoute = (children: React.ReactElement): React.ReactElement => {
     if (!authentication.isAuthenticated) return <Redirect to="/login" />;

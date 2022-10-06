@@ -7,7 +7,7 @@ import Text from '../../../components/Text';
 import Section from '../../../components/Section';
 import SessionsService from '../../../services/sessions.service';
 import toastMsg, { ToastType } from '../../../utils/toastMsg';
-import { AuthenticationContext } from '../../../contexts/AuthenticationContext';
+import { useAuthentication } from '../../../contexts/AuthenticationContext';
 import Input from '../../../components/Input';
 import { useLoader } from '../../../contexts/LoaderContext';
 import './styles.scss';
@@ -19,7 +19,7 @@ interface ILogin {
 
 const Login: React.FunctionComponent = (): React.ReactElement => {
   const [loginForm, setLoginForm] = useState<ILogin>({ email: '', password: '' });
-  const { setAuthentication } = AuthenticationContext();
+  const { setAuthentication } = useAuthentication();
 
   const { renderLoader } = useLoader();
 

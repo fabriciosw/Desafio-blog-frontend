@@ -15,7 +15,7 @@ import IPostCategory from '../../../interfaces/IPostCategory';
 import PostCategoriesService from '../../../services/postCategories.service';
 import './styles.scss';
 
-const Post: React.FunctionComponent = () => {
+const CreatePost: React.FunctionComponent = () => {
   const [post, setPost] = useState<ICreatePost>({ category: '', content: '', title: '' } as ICreatePost);
   const [postCategories, setPostCategories] = useState<IPostCategory[]>([]);
   const { renderLoader } = useLoader();
@@ -50,7 +50,7 @@ const Post: React.FunctionComponent = () => {
     await PostsService.create(category, title, content)
       .then(() => {
         toastMsg(ToastType.Success, 'Post criado!');
-        history.push('/');
+        history.push('/meus-posts');
       })
       .catch(() => {
         toastMsg(ToastType.Error, 'Ocorreu algum problema');
@@ -111,4 +111,4 @@ const Post: React.FunctionComponent = () => {
   );
 };
 
-export default Post;
+export default CreatePost;

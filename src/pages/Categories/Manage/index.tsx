@@ -15,7 +15,7 @@ import IPostCategory from '../../../interfaces/IPostCategory';
 import styles from './styles.module.scss';
 import Input from '../../../components/Input';
 
-const Post: React.FunctionComponent = () => {
+const ManageCategories: React.FunctionComponent = () => {
   const [postCategories, setPostCategories] = useState<IPostCategory[]>([]);
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
@@ -46,6 +46,7 @@ const Post: React.FunctionComponent = () => {
         toastMsg(ToastType.Success, 'Categoria criada!');
         await fetchCategories();
         setShowCreateModal(false);
+        setName('');
       })
       .catch((error) => {
         if (error?.response?.data?.message === 'CATEGORY_NAME_ALREADY_REGISTERED')
@@ -125,4 +126,4 @@ const Post: React.FunctionComponent = () => {
   );
 };
 
-export default Post;
+export default ManageCategories;

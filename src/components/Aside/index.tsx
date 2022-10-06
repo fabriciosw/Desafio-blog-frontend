@@ -6,7 +6,7 @@ import { BiCategory } from 'react-icons/bi';
 import { MdOutlinePostAdd } from 'react-icons/md';
 import { Button, Fade, styled, Tooltip, tooltipClasses, TooltipProps } from '@mui/material';
 import { useHistory } from 'react-router';
-import { IAuth, AuthenticationContext } from '../../contexts/AuthenticationContext';
+import { IAuth, useAuthentication } from '../../contexts/AuthenticationContext';
 import SessionsService from '../../services/sessions.service';
 import './styles.scss';
 
@@ -26,7 +26,7 @@ const AsideTooltip = styled(({ className, ...props }: TooltipProps) => (
 }));
 
 const Aside = (): React.ReactElement => {
-  const { authentication, setAuthentication } = AuthenticationContext();
+  const { authentication, setAuthentication } = useAuthentication();
   const history = useHistory();
 
   const handleOptionsPermission = (children: JSX.Element, permission?: 'none' | 'admin'): JSX.Element | string => {

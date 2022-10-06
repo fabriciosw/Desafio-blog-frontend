@@ -14,7 +14,7 @@
 .post {
   border: #2e373f 2px solid;
   background-color: #161b21;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   width: 55%;
   padding: 3rem;
   margin: 6rem auto 3rem auto;
@@ -27,16 +27,16 @@
   flex-direction: column;
   background-color: #161b21;
   border: 3px #23282e solid;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 
   &__post {
     &__category {
       width: fit-content;
-      padding: 6px;
+      padding: 0.375rem;
 
       margin: 0;
       background-color: #21262c;
-      border-radius: 8px;
+      border-radius: 0.5rem;
       border: solid 2px #292e34;
     }
 

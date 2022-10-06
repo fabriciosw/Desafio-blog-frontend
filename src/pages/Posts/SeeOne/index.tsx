@@ -11,7 +11,7 @@ import { useLoader } from '../../../contexts/LoaderContext';
 import toastMsg, { ToastType } from '../../../utils/toastMsg';
 import './styles.scss';
 
-const Post: React.FunctionComponent = () => {
+const SeeOnePost: React.FunctionComponent = () => {
   const [post, setPost] = useState<IPost>({} as IPost);
   const { renderLoader } = useLoader();
 
@@ -66,4 +66,4 @@ const Post: React.FunctionComponent = () => {
   );
 };
 
-export default Post;
+export default SeeOnePost;

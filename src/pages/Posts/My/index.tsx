@@ -12,7 +12,7 @@ import toastMsg, { ToastType } from '../../../utils/toastMsg';
 import formatDate from '../../../utils/formatDate';
 import styles from './styles.module.scss';
 
-const Post: React.FunctionComponent = () => {
+const MyPosts: React.FunctionComponent = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
 
   const history = useHistory();
@@ -100,4 +100,4 @@ const Post: React.FunctionComponent = () => {
   );
 };
 
-export default Post;
+export default MyPosts;
